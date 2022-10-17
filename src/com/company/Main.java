@@ -1,26 +1,23 @@
 package com.company;
 
-import com.company.abstractions.VehicleMovement;
-import com.company.modules.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.company.vehicle.GroundVehicle;
+import com.company.vehicle.SkyVehicle;
 
 public class Main {
-
     public static void main(String[] args) {
-	// write your code here
+        GroundVehicle groundVehicle = new GroundVehicle();
+        SkyVehicle skyVehicle = new SkyVehicle();
+
         Auto auto = new Auto("Porsche", 2015);
+        auto.setVehicleType(groundVehicle);
+        auto.drive();
+
         Train train = new Train("U-Train", 2010);
-        Airplane airplane = new Airplane("Airbus-321", 2012);
+        train.setVehicleType(groundVehicle);
+        train.drive();
 
-        List<VehicleMovement> vehicles = new ArrayList<>();
-        vehicles.add(auto);
-        vehicles.add(train);
-        vehicles.add(airplane);
-
-        Movement movement = new Movement(vehicles);
-        movement.implement();
-
+        Airplane airplane = new Airplane("Airbus-321", 2018);
+        airplane.setVehicleType(skyVehicle);
+        airplane.fly();
     }
 }
